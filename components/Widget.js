@@ -1,6 +1,6 @@
 import { useSubscriptionInfo, useIsAccountSubscribed } from 'src/hooks'
 import Image from 'next/image'
-import styles from 'styles/Checkout.module.css'
+import styles from 'styles/Widget.module.css'
 
 
 const BoxTitle = ({ text }) => <div className={styles.boxtitle}>{text}</div>
@@ -36,20 +36,12 @@ const Separator = ({ text }) => {
 const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
-const Checkout = () => {
-  // const account = '0x66814090cCA5f4cFf0262720DC82F640e6E0663f'
-  // const isSubscribed = useIsAccountSubscribed(account, productId)
-  // console.log(`${account} is subscribed = ${isSubscribed}`)
-
-  // const productId = 0
-  // const info = useSubscriptionInfo(productId)
-  // console.log(`useSubscriptionInfo = ${JSON.stringify(info)}`)
-
+const Widget = () => {
   return (
     <div className={styles.widget}>
       <div className={styles.subscribe}>Subscribe to</div>
       <div className={styles.product}>
-        <BoxIcon src='/demo-logo.png' alt='Demo logo' />
+        <BoxIcon src='/product-logo.png' alt='Product logo' />
         <div className={styles.name}>Premium Membership</div>
       </div>
 
@@ -101,4 +93,4 @@ const Checkout = () => {
   )
 }
 
-export default Checkout
+export default Widget

@@ -6,8 +6,8 @@ const AppContent = ({ Component, pageProps }) => {
   return (
     <div className={styles.container}>
         <Head>
-          <title>Degens Club</title>
-          <meta name="description" content="Andsub demo app" />
+          <title>Andsub Checkout</title>
+          <meta name="description" content="Andsub checkout" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
