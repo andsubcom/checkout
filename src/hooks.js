@@ -1,5 +1,5 @@
 import { useContractCall } from '@usedapp/core'
-import { Interface } from '@usedapp/core/node_modules/@ethersproject/abi'
+import { Interface } from '@ethersproject/abi'
 import SUBSCRIPTION_HUB_ABI from 'public/abi/SubscriptionsHub.json'
 
 
