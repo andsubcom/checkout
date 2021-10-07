@@ -19,16 +19,16 @@ const TOKEN = {
 
 const Product = ({ pid }) => {
   const product = useSubscriptionInfo(pid)
-  console.log(`product = ${JSON.stringify(product)}`)
+  const loading = !product
 
   // TODO: remove filling empty data when contract updates
-  if (product.amount) {
-    product['name'] = 'Hodler Pro – Monthly'
+  var name = ''
+  if (product) {
+    name = 'Hodler Pro – Monthly'
   }
-  
-  var name = product.name ? product.name : ''
-  var price = product.amount ? `${utils.formatUnits(product.amount, TOKEN.decimals)} ${TOKEN.symbol}` : ''
-  var period = product.period ? formatPeriod(product.period.toNumber()) : ''
+
+  var price = product ? `${utils.formatUnits(product.amount, TOKEN.decimals)} ${TOKEN.symbol}` : ''
+  var period = product ? formatPeriod(product.period.toNumber()) : ''
 
   return (
     <>
@@ -42,7 +42,7 @@ const Product = ({ pid }) => {
 
       <div className={styles.pricebox}>
         <div className={styles.price}>{price}</div>
-        <div className={styles.period}>per {period}</div>
+        <div className={styles.period}>{period ? `per ${period}` : ''}</div>
       </div>
     </>
   )
