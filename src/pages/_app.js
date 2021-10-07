@@ -4,10 +4,9 @@ import 'styles/globals.css'
 
 
 const config = {
-  readOnlyChainId: ChainId.Mainnet,
+  readOnlyChainId: ChainId.Ropsten,
+  supportedChains: [ChainId.Ropsten],
   readOnlyUrls: {
-    // TODO: replace mainnet url
-    [ChainId.Mainnet]: 'https://mainnet.infura.io/v3/62687d1a985d4508b2b7a24827551934',
     [ChainId.Ropsten]: `https://eth-ropsten.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`
   },
 }
