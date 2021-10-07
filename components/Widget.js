@@ -1,5 +1,5 @@
 import { shortenIfAddress, useEthers } from '@usedapp/core'
-import { useSubscriptionInfo } from 'src/hooks'
+import { useTokenAllowance } from 'src/hooks'
 import { formatPeriod } from 'src/utils'
 import { utils } from 'ethers'
 import Image from 'next/image'
@@ -10,25 +10,18 @@ import styles from 'styles/Widget.module.css'
 // TODO: add actual address of token on Ropsten
 // TODO: ideally retreive token data from Ropsten statically on build
 const TOKEN = {
-  address: '0x0',
+  address: process.env.xTokenAddress,
   name: 'Tether',
   symbol: 'USDT',
   decimals: 18,
 }
 
 
-const Product = ({ pid }) => {
-  const product = useSubscriptionInfo(pid)
-  const loading = !product
-
-  // TODO: remove filling empty data when contract updates
-  var name = ''
-  if (product) {
-    name = 'Hodler Pro – Monthly'
-  }
-
-  var price = product ? `${utils.formatUnits(product.amount, TOKEN.decimals)} ${TOKEN.symbol}` : ''
-  var period = product ? formatPeriod(product.period.toNumber()) : ''
+// product supposed to be non-null
+const Product = ({ product }) => {
+  var name = 'Hodler Pro – Monthly' // TODO: remove filling empty data when contract updated
+  var price = `${utils.formatUnits(product.amount, TOKEN.decimals)} ${TOKEN.symbol}`
+  var period = formatPeriod(product.period.toNumber())
 
   return (
     <>
@@ -42,7 +35,7 @@ const Product = ({ pid }) => {
 
       <div className={styles.pricebox}>
         <div className={styles.price}>{price}</div>
-        <div className={styles.period}>{period ? `per ${period}` : ''}</div>
+        <div className={styles.period}>{`per ${period}`}</div>
       </div>
     </>
   )
@@ -81,18 +74,25 @@ const Separator = ({ text }) => {
 const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
-const Widget = ({ pid }) => {
+const Widget = ({ pid, product }) => {
+  const selectedToken = TOKEN
   const { account } = useEthers()
+
+  const allowance = useTokenAllowance(selectedToken.address, account)
+  const hasAllowance = allowance >= product.amount
+
+  console.log('hasAllowance =', hasAllowance)
+
 
   return (
     <div className={styles.widget}>
-      <Product pid={pid} />
+      <Product product={product} />
       <Space size='45px' />
 
       <Separator text='Connect wallet' />
       <Space size='20px' />
 
-      <BoxTitle text='Account' />
+      <BoxTitle text={'Account'} />
       <div className={styles.accountbox}>
         <BoxIcon src='/metamask.svg' alt='Metamask logo' />
         <div className={styles.account}>{account ? shortenIfAddress(account) : 'Connect wallet'}</div>
@@ -116,14 +116,17 @@ const Widget = ({ pid }) => {
       <div className={styles.coinbox}>
         <BoxIcon src='/coin-logo.png' alt='Coin logo' />
         <div className={styles.coincontent}>
-          <div className={styles.coinsymbol}>USDT</div>
+          <div style={{display: 'flex', alignItems: 'center'}}>
+            <div className={styles.coinsymbol}>USDT</div>
+            {!hasAllowance && <span className={styles.noallowance}/>}
+          </div>
           <div className={styles.coinname}>Tether</div>
         </div>
         <div className={styles.coinbalance}>1,402.00</div>
         <BoxDropdown />
       </div>
 
-      <button className={styles.button}>Subscribe</button>
+      <button className={styles.button}>{hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`}</button>
       <div className={styles.hint}>By confirming your subscription you allow Company to charge you for this payment and future payments. Payments processed on-chain.</div>
     </div>
   )

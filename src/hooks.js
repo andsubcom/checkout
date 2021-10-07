@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import { useContractCall, useEthers } from '@usedapp/core'
 import { Interface } from '@ethersproject/abi'
 import SUBSCRIPTION_HUB_ABI from 'public/abi/SubscriptionsHub.json'
+import ERC20_ABI from 'public/abi/ERC20.json'
 import { fetchSubscriptions } from './api'
 
 const ANDSUB_HUB_ADDRESS = process.env.andsubHubAddress
-const XTOKEN_ADDRESS = process.env.xTokenAddress
 
 
 export const useSubscriptionInfo = (productId) => useContractCall({
@@ -15,8 +15,10 @@ export const useSubscriptionInfo = (productId) => useContractCall({
   args: [productId]
 })
 
-export const useIsAccountSubscribed = (account, productId) => {
-  const [isSubscribed] = useContractCall({
+export const useIsSubscribed = (productId) => {
+  const { account } = useEthers()
+
+  const [isSubscribed] = useContractCall(account && {
     abi: new Interface(SUBSCRIPTION_HUB_ABI),
     address: ANDSUB_HUB_ADDRESS,
     method: 'checkUserHasActiveSubscription',
@@ -25,7 +27,7 @@ export const useIsAccountSubscribed = (account, productId) => {
   return isSubscribed
 }
 
-export const useSubscriptions = function(organizationId) {
+export const useSubscriptions = function (organizationId) {
   const { library } = useEthers()
   const [products, setProducts] = useState()
 
@@ -40,4 +42,15 @@ export const useSubscriptions = function(organizationId) {
   }, [library, organizationId])
 
   return products
+}
+
+export const useTokenAllowance = function (tokenAddress, account) {
+  const [allowance] = useContractCall(tokenAddress && account && {
+    abi: new Interface(ERC20_ABI),
+    address: tokenAddress,
+    method: 'allowance',
+    args: [account, ANDSUB_HUB_ADDRESS]
+  }) ?? []
+
+  return allowance
 }
