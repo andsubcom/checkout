@@ -36,7 +36,10 @@ const Separator = ({ text }) => {
 const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
-const Widget = () => {
+const Widget = ({ pid }) => {
+  const product = useSubscriptionInfo(pid)
+  console.log(`product = ${JSON.stringify(product)}`)
+
   return (
     <div className={styles.widget}>
       <div className={styles.subscribe}>Subscribe to</div>

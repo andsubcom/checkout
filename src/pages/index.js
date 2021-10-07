@@ -1,10 +1,7 @@
-import Widget from 'components/Widget'
-
-
-const Checkout = () => {
+const Home = () => {
   return (
-    <Widget />
+    <p style={{ fontSize: '18px', color: '#6c86ad'}}>No product id</p>
   )
 }
 
-export default Checkout
+export default Home
