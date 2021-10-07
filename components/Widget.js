@@ -1,8 +1,52 @@
 import { shortenIfAddress, useEthers } from '@usedapp/core'
-import { useSubscriptionInfo, useIsAccountSubscribed } from 'src/hooks'
+import { useSubscriptionInfo } from 'src/hooks'
+import { formatPeriod } from 'src/utils'
+import { utils } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'
 
+
+// TODO: tokens data going to be hardcoded
+// TODO: add actual address of token on Ropsten
+// TODO: ideally retreive token data from Ropsten statically on build
+const TOKEN = {
+  address: '0x0',
+  name: 'Tether',
+  symbol: 'USDT',
+  decimals: 18,
+}
+
+
+const Product = ({ pid }) => {
+  const product = useSubscriptionInfo(pid)
+  console.log(`product = ${JSON.stringify(product)}`)
+
+  // TODO: remove filling empty data when contract updates
+  if (product.amount) {
+    product['name'] = 'Hodler Pro – Monthly'
+  }
+  
+  var name = product.name ? product.name : ''
+  var price = product.amount ? `${utils.formatUnits(product.amount, TOKEN.decimals)} ${TOKEN.symbol}` : ''
+  var period = product.period ? formatPeriod(product.period.toNumber()) : ''
+
+  return (
+    <>
+      <div className={styles.subscribe}>Subscribe to</div>
+      <div className={styles.product}>
+        {name && <BoxIcon src='/product-logo.png' alt='Product logo' />}
+        <div className={styles.name}>{name}</div>
+      </div>
+
+      <Space size='35px' />
+
+      <div className={styles.pricebox}>
+        <div className={styles.price}>{price}</div>
+        <div className={styles.period}>per {period}</div>
+      </div>
+    </>
+  )
+}
 
 const BoxTitle = ({ text }) => <div className={styles.boxtitle}>{text}</div>
 
@@ -39,25 +83,12 @@ const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 const Widget = ({ pid }) => {
   const { account } = useEthers()
-  const product = useSubscriptionInfo(pid)
-  console.log(`product = ${JSON.stringify(product)}`)
 
   return (
     <div className={styles.widget}>
-      <div className={styles.subscribe}>Subscribe to</div>
-      <div className={styles.product}>
-        <BoxIcon src='/product-logo.png' alt='Product logo' />
-        <div className={styles.name}>Premium Membership</div>
-      </div>
-
-      <Space size='35px' />
-
-      <div className={styles.pricebox}>
-        <div className={styles.price}>$20.00</div>
-        <div className={styles.period}>per month</div>
-      </div>
-
+      <Product pid={pid} />
       <Space size='45px' />
+
       <Separator text='Connect wallet' />
       <Space size='20px' />
 
