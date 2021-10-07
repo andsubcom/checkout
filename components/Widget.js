@@ -1,3 +1,4 @@
+import { shortenIfAddress, useEthers } from '@usedapp/core'
 import { useSubscriptionInfo, useIsAccountSubscribed } from 'src/hooks'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'
@@ -37,6 +38,7 @@ const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
 const Widget = ({ pid }) => {
+  const { account } = useEthers()
   const product = useSubscriptionInfo(pid)
   console.log(`product = ${JSON.stringify(product)}`)
 
@@ -62,7 +64,7 @@ const Widget = ({ pid }) => {
       <BoxTitle text='Account' />
       <div className={styles.accountbox}>
         <BoxIcon src='/metamask.svg' alt='Metamask logo' />
-        <div className={styles.account}>0x0000...5ef0</div>
+        <div className={styles.account}>{account ? shortenIfAddress(account) : 'Connect wallet'}</div>
         <BoxDropdown />
       </div>
 
