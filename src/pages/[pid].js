@@ -1,5 +1,6 @@
 import { useEthers } from '@usedapp/core'
 import Widget from 'components/Widget'
+import Subscribed from 'components/Subscribed'
 import { useRouter } from 'next/router'
 import { useIsSubscribed, useSubscriptionInfo } from 'src/hooks'
 
@@ -23,7 +24,7 @@ const Checkout = () => {
     {loading && <p>...</p>}
     {!loading &&
       (isSubscribed
-        ? <p>Subscribed</p>
+        ? <Subscribed pid={pid} product={product} />
         : <Widget pid={pid} product={product}/>
       )
     }
