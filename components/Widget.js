@@ -81,9 +81,6 @@ const Widget = ({ pid, product }) => {
   const allowance = useTokenAllowance(selectedToken.address, account)
   const hasAllowance = allowance >= product.amount
 
-  console.log('hasAllowance =', hasAllowance)
-
-
   return (
     <div className={styles.widget}>
       <Product product={product} />
@@ -116,9 +113,10 @@ const Widget = ({ pid, product }) => {
       <div className={styles.coinbox}>
         <BoxIcon src='/coin-logo.png' alt='Coin logo' />
         <div className={styles.coincontent}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <div className={styles.coinsymbol}>USDT</div>
-            {!hasAllowance && <span className={styles.noallowance}/>}
+            <span style={{ width: '4px' }} />
+            {!hasAllowance && <Image src='/lock.svg' width='14px' height='14px' alt='No allowance' />}
           </div>
           <div className={styles.coinname}>Tether</div>
         </div>
@@ -126,8 +124,23 @@ const Widget = ({ pid, product }) => {
         <BoxDropdown />
       </div>
 
-      <button className={styles.button}>{hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`}</button>
-      <div className={styles.hint}>By confirming your subscription you allow Company to charge you for this payment and future payments. Payments processed on-chain.</div>
+      <button className={styles.button}>
+        {!hasAllowance && 
+          <>
+            <Image src='/unlock.svg' width='20px' height='20px' alt='Unlock' />
+            <span style={{ width: '6px' }}/>
+          </>
+        }
+        {hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`}
+        {!hasAllowance && <span style={{ width: '13px' }} />}
+      </button>
+      <div className={styles.hint}>
+        {
+          hasAllowance
+            ? 'By confirming your subscription you allow Company to charge you for this payment and future payments. Payments processed on-chain.'
+            : `By apprving you allow Andsub contract to charge ${selectedToken.symbol} from your account. The contract can\'t transfer more than a subscription rate per period.`
+        }
+      </div>
     </div>
   )
 }
