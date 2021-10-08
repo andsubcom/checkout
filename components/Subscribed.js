@@ -2,6 +2,7 @@ import { utils } from 'ethers'
 import { formatPeriod } from 'src/utils'
 import Image from 'next/image'
 import styles from 'styles/Subscribed.module.css'
+import { useSendCancel } from 'src/hooks'
 
 
 const Subscribed = ({ pid, product }) => {
@@ -13,6 +14,15 @@ const Subscribed = ({ pid, product }) => {
 
   const cost = utils.formatUnits(product.amount, token.decimals)
   const period = formatPeriod(product.period.toNumber())
+
+  const { state: cancelState, send: sendCancel } = useSendCancel()
+  const cancelClick = () => {
+    console.log('cancel')
+    // TODO: show loader
+    sendCancel(pid)
+  }
+  // TODO: hide loader, update data when cancel mined
+
 
   return (
     <div className={styles.content}>

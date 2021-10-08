@@ -1,11 +1,15 @@
 import { shortenIfAddress, useEthers } from '@usedapp/core'
-import { useTokenAllowance } from 'src/hooks'
+import { useSendSubscribe, useSendApproveUnlimited, useTokenAllowance } from 'src/hooks'
 import { formatPeriod } from 'src/utils'
-import { utils } from 'ethers'
+import { ethers, utils } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'
+import ProgressBar from './ProgressBar'
 
+
+const hubAddress = process.env.andsubHubAddress
 const token = process.env.token
+
 
 // product supposed to be non-null
 const Product = ({ product }) => {
@@ -30,6 +34,23 @@ const Product = ({ product }) => {
     </>
   )
 }
+
+
+const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken }) => {
+  return (
+    <button className={styles.button} onClick={hasAllowance ? subscribeClick : approveClick}>
+      {!hasAllowance &&
+        <>
+          <Image src='/unlock.svg' width='20px' height='20px' alt='Unlock' />
+          <span style={{ width: '6px' }} />
+        </>
+      }
+      {hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`}
+      {!hasAllowance && <span style={{ width: '13px' }} />}
+    </button>
+  )
+}
+
 
 const BoxTitle = ({ text }) => <div className={styles.boxtitle}>{text}</div>
 
@@ -69,7 +90,25 @@ const Widget = ({ pid, product }) => {
   const { account } = useEthers()
 
   const allowance = useTokenAllowance(selectedToken.address, account)
-  const hasAllowance = allowance >= product.amount
+  const hasAllowance = allowance ? allowance.gt(product.amount) : false
+
+  const { state: approveState, send: sendApprove } = useSendApproveUnlimited(selectedToken.address)
+  
+  const approveClick = () => {
+    // TODO: show loader
+    sendApprove(hubAddress, ethers.constants.MaxUint256)
+  }
+  
+  const { state: subscribeState, send: sendSubscribe } = useSendSubscribe()
+  const subscribeClick = () => {
+    console.log('subscribe')
+    // TODO: show loader
+    sendSubscribe(pid, true)
+  }
+
+  // TODO: hide loader when createState.status gets value of 'Mined'
+  // const hasPendingTransaction = state
+
 
   return (
     <div className={styles.widget}>
@@ -114,16 +153,8 @@ const Widget = ({ pid, product }) => {
         <BoxDropdown />
       </div>
 
-      <button className={styles.button}>
-        {!hasAllowance && 
-          <>
-            <Image src='/unlock.svg' width='20px' height='20px' alt='Unlock' />
-            <span style={{ width: '6px' }}/>
-          </>
-        }
-        {hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`}
-        {!hasAllowance && <span style={{ width: '13px' }} />}
-      </button>
+      <Button hasAllowance={hasAllowance} subscribeClick={subscribeClick} approveClick={approveClick} selectedToken={selectedToken} />
+
       <div className={styles.hint}>
         {
           hasAllowance

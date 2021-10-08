@@ -4,8 +4,8 @@ import 'styles/globals.css'
 
 
 const config = {
-  readOnlyChainId: ChainId.Ropsten,
   supportedChains: [ChainId.Ropsten],
+  readOnlyChainId: ChainId.Ropsten,
   readOnlyUrls: {
     [ChainId.Ropsten]: `https://eth-ropsten.alchemyapi.io/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`
   },
