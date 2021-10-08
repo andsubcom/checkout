@@ -4,21 +4,14 @@ import Image from 'next/image'
 import styles from 'styles/Subscribed.module.css'
 
 
-// TODO: move to config
-const TOKEN = {
-  address: process.env.xTokenAddress,
-  name: 'Tether',
-  symbol: 'USDT',
-  decimals: 18,
-}
-
 const Subscribed = ({ pid, product }) => {
+  const token = process.env.token
   const account = '0x66814090cCA5f4cFf0262720DC82F640e6E0663f'
   const network = 'Ropsten'
   const name = 'Hodler Pro – Monthly'
   const symbols = 18
 
-  const cost = utils.formatUnits(product.amount, TOKEN.decimals)
+  const cost = utils.formatUnits(product.amount, token.decimals)
   const period = formatPeriod(product.period.toNumber())
 
   return (
@@ -31,7 +24,7 @@ const Subscribed = ({ pid, product }) => {
 
       <p className={styles.text}>
         {'You\'re charged '}
-        <span className={styles.highlightSpan}>{`${cost} ${TOKEN.symbol} `}</span>
+        <span className={styles.highlightSpan}>{`${cost} ${token.symbol} `}</span>
         per
         <span className={styles.highlightSpan}>{` ${period}`}</span>
         .

@@ -5,22 +5,12 @@ import { utils } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'
 
-
-// TODO: tokens data going to be hardcoded
-// TODO: add actual address of token on Ropsten
-// TODO: ideally retreive token data from Ropsten statically on build
-const TOKEN = {
-  address: process.env.xTokenAddress,
-  name: 'Tether',
-  symbol: 'USDT',
-  decimals: 18,
-}
-
+const token = process.env.token
 
 // product supposed to be non-null
 const Product = ({ product }) => {
   var name = 'Hodler Pro – Monthly' // TODO: remove filling empty data when contract updated
-  var price = `${utils.formatUnits(product.amount, TOKEN.decimals)} ${TOKEN.symbol}`
+  var price = `${utils.formatUnits(product.amount, token.decimals)} ${token.symbol}`
   var period = formatPeriod(product.period.toNumber())
 
   return (
@@ -75,7 +65,7 @@ const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
 const Widget = ({ pid, product }) => {
-  const selectedToken = TOKEN
+  const selectedToken = token
   const { account } = useEthers()
 
   const allowance = useTokenAllowance(selectedToken.address, account)
