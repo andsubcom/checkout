@@ -146,6 +146,21 @@
   padding: 0px 20px;
   font-weight: 500;
   font-size: 16px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonLoading {
+  cursor: unset;
+}
+
+.buttonLoading:hover,
+.buttonLoading:focus,
+.buttonLoading:active {
+  background-color: #0070f3;
 }
 
 .hint {
@@ -154,4 +169,8 @@
   padding: 14px 10px 14px 10px;
   color: #4e6180;
   text-align: center;
+}
+
+.progressBar {
+  margin: 0px 0px 0px 0px;
 }

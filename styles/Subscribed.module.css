@@ -1,0 +1,45 @@
+.content {
+  max-width: 600px;
+  align-self: flex-start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  
+  padding-top: 120px;
+}
+
+.title {
+  font-size: 32px;
+  margin: 10px 0px 15px 0px;
+}
+
+.text {
+  font-size: 18px;
+  text-align: unset;
+  line-height: 28px;
+  margin: 10px 0px 0px 0px;
+}
+
+.cancel {
+  font-size: 18px;
+  color: #4e6180;
+  text-align: center;
+  cursor: pointer;
+
+  margin-top: 60px;
+}
+
+.highlightSpan {
+  color: #0070f3;
+}
+
+.codeSpan {
+  background: #37393f;
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 16px;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
