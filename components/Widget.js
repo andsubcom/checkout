@@ -1,10 +1,11 @@
-import { shortenIfAddress, useEthers } from '@usedapp/core'
+import { shortenIfAddress, useEthers, useTokenBalance } from '@usedapp/core'
 import { useSendSubscribe, useSendApproveUnlimited, useTokenAllowance } from 'src/hooks'
+import { useState } from 'react'
 import { formatPeriod } from 'src/utils'
 import { ethers, utils } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'
-import ProgressBar from './ProgressBar'
+import ProgressBar from 'components/ProgressBar'
 
 
 const hubAddress = process.env.andsubHubAddress
@@ -36,17 +37,22 @@ const Product = ({ product }) => {
 }
 
 
-const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken }) => {
+const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loading }) => {
+  const click = loading ? null : (hasAllowance ? subscribeClick : approveClick)
+
   return (
-    <button className={styles.button} onClick={hasAllowance ? subscribeClick : approveClick}>
-      {!hasAllowance &&
+    <button className={`${styles.button} ${loading && styles.buttonLoading}`} onClick={click}>
+      {loading && <ProgressBar className={styles.progressBar} color={'#FFFFFF'} />}
+      {!loading && !hasAllowance &&
         <>
           <Image src='/unlock.svg' width='20px' height='20px' alt='Unlock' />
           <span style={{ width: '6px' }} />
         </>
       }
-      {hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`}
-      {!hasAllowance && <span style={{ width: '13px' }} />}
+      {!loading && 
+        (hasAllowance ? 'Subscribe' : `Approve ${selectedToken.symbol}`)
+      }
+      {!loading && !hasAllowance && <span style={{ width: '13px' }} />}
     </button>
   )
 }
@@ -89,26 +95,28 @@ const Widget = ({ pid, product }) => {
   const selectedToken = token
   const { account } = useEthers()
 
+  const [hasPendingTransaction, setHasPendingTransaction] = useState(false)
+
   const allowance = useTokenAllowance(selectedToken.address, account)
-  const hasAllowance = allowance ? allowance.gt(product.amount) : false
+  const hasAllowance = allowance ? allowance.gt(product.amount) : undefined
 
   const { state: approveState, send: sendApprove } = useSendApproveUnlimited(selectedToken.address)
-  
-  const approveClick = () => {
-    // TODO: show loader
-    sendApprove(hubAddress, ethers.constants.MaxUint256)
-  }
-  
+  const approveClick = () => { sendApprove(hubAddress, ethers.constants.MaxUint256) }
+
   const { state: subscribeState, send: sendSubscribe } = useSendSubscribe()
-  const subscribeClick = () => {
-    console.log('subscribe')
-    // TODO: show loader
-    sendSubscribe(pid, true)
+  const subscribeClick = () => { sendSubscribe(pid, true) }
+
+  // 'None' | 'Mining' | 'Success' | 'Fail' | 'Exception'
+  const pendingStatuses = ['Mining']
+  const newHasPendingTransaction = pendingStatuses.includes(approveState.status) || pendingStatuses.includes(subscribeState.status)
+  console.log('newHasPendingTransaction =', newHasPendingTransaction)
+  if (hasPendingTransaction != newHasPendingTransaction) {
+    setHasPendingTransaction(newHasPendingTransaction)
   }
+  console.log('approveState.status =', approveState.status, 'subscribeState.status =', subscribeState.status)
 
-  // TODO: hide loader when createState.status gets value of 'Mined'
-  // const hasPendingTransaction = state
-
+  const tokenBalance = useTokenBalance(selectedToken.address, account)
+  const tokenBalanceFormatted = tokenBalance ? utils.formatUnits(tokenBalance, selectedToken.decimals) : undefined
 
   return (
     <div className={styles.widget}>
@@ -143,17 +151,17 @@ const Widget = ({ pid, product }) => {
         <BoxIcon src='/coin-logo.png' alt='Coin logo' />
         <div className={styles.coincontent}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div className={styles.coinsymbol}>USDT</div>
+            <div className={styles.coinsymbol}>{selectedToken.symbol}</div>
             <span style={{ width: '4px' }} />
             {!hasAllowance && <Image src='/lock.svg' width='14px' height='14px' alt='No allowance' />}
           </div>
-          <div className={styles.coinname}>Tether</div>
+          <div className={styles.coinname}>{selectedToken.name}</div>
         </div>
-        <div className={styles.coinbalance}>1,402.00</div>
+        <div className={styles.coinbalance}>{tokenBalanceFormatted}</div>
         <BoxDropdown />
       </div>
 
-      <Button hasAllowance={hasAllowance} subscribeClick={subscribeClick} approveClick={approveClick} selectedToken={selectedToken} />
+      <Button hasAllowance={hasAllowance} subscribeClick={subscribeClick} approveClick={approveClick} selectedToken={selectedToken} loading={newHasPendingTransaction} />
 
       <div className={styles.hint}>
         {

@@ -11,6 +11,8 @@ const Checkout = () => {
   // console.log(`query = ${JSON.stringify(router.query)}, pid = ${pid}`)
 
   var isSubscribed = useIsSubscribed(pid)
+  console.log('isSubscribed =', isSubscribed)
+
   const product = useSubscriptionInfo(pid)
   const loading = typeof isSubscribed === 'undefined' || !product
 
@@ -21,7 +23,7 @@ const Checkout = () => {
   // }
 
   return <>
-    {loading && <p>...</p>}
+    {loading && <span></span>}
     {!loading &&
       (isSubscribed
         ? <Subscribed pid={pid} product={product} />

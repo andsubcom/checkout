@@ -153,10 +153,24 @@
   align-items: center;
 }
 
+.buttonLoading {
+  cursor: unset;
+}
+
+.buttonLoading:hover,
+.buttonLoading:focus,
+.buttonLoading:active {
+  background-color: #0070f3;
+}
+
 .hint {
   align-self: center;
   font-size: 12px;
   padding: 14px 10px 14px 10px;
   color: #4e6180;
   text-align: center;
+}
+
+.progressBar {
+  margin: 0px 0px 0px 0px;
 }
