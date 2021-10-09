@@ -1,0 +1,35 @@
+.layout {
+  align-self: stretch;
+  flex-grow: 1;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.side {
+  flex-grow: 1;
+  flex-basis: 0;
+  min-width: 450px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding: 40px;
+}
+
+.left {
+  /* background-color: black; */
+}
+
+.right {
+  /* background-color: white; */
+}
+
+.divider {
+  background-color: hsla(0, 0%, 100%, .2);
+  width: 1px;
+}

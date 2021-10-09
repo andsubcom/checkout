@@ -10,7 +10,6 @@
   flex-grow: 1;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
+  justify-content: stretch;
+  align-items: stretch;
 }
