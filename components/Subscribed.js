@@ -6,7 +6,10 @@ import { useSendCancel } from 'src/hooks'
 
 
 const Subscribed = ({ pid, product }) => {
-  const token = process.env.token
+  // TODO: get token address from product
+  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
+  const token = process.env.tokens[payableToken]
+
   const account = '0x66814090cCA5f4cFf0262720DC82F640e6E0663f'
   const network = 'Ropsten'
   const name = 'Hodler Pro – Monthly'
@@ -34,22 +37,22 @@ const Subscribed = ({ pid, product }) => {
 
       <p className={styles.text}>
         {'You\'re charged '}
-        <span className={styles.highlightSpan}>{`${cost} ${token.symbol} `}</span>
+        <span className='highlightSpan'>{`${cost} ${token.symbol} `}</span>
         per
-        <span className={styles.highlightSpan}>{` ${period}`}</span>
+        <span className='highlightSpan'>{` ${period}`}</span>
         .
       </p>
 
       <p className={styles.text}>
         {'You\'re subscribed to '}
-        <span className={styles.highlightSpan}>{name}</span>
+        <span className='highlightSpan'>{name}</span>
         {' on '}
-        <span className={styles.highlightSpan}>{network} network</span>
+        <span className='highlightSpan'>{network} network</span>
         {' from '}
         <span className={styles.codeSpan}>{account}</span>
         {'. '}
         <a
-          className={styles.highlightSpan} style={{ cursor: 'pointer' }}
+          className='highlightSpan' style={{ cursor: 'pointer' }}
           href={`https://ropsten.rarible.com/user/${account}?tab=owned`}
           rel="noopener noreferrer" target='_blank' >
           Check
