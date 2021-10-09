@@ -32,20 +32,20 @@ function AccountSelect(props) {
         <div className={styles.account}>{account ? shortenIfAddress(account) : 'Connect wallet'}</div>
         <BoxDropdown />
       </div>
-    <div className={dropdownStyles.container} style={{ display: isOpen ? 'block' : 'none' }}>
-      <div className={dropdownStyles.item} onClick={handleItemClick}>
-        <BoxIcon src='/metamask.svg' alt='Metamask logo' />
-        <div className={styles.account}>{ shortenIfAddress(account) }</div>
+      <div className={dropdownStyles.container} style={{ display: isOpen ? 'block' : 'none' }}>
+        <div className={dropdownStyles.item} onClick={handleItemClick}>
+          <BoxIcon src='/metamask.svg' alt='Metamask logo' />
+          <div className={styles.account}>{ shortenIfAddress(account) }</div>
+        </div>
+        <div className={dropdownStyles.item} onClick={handleItemClick}>
+          <BoxIcon src='/metamask.svg' alt='Metamask logo' />
+          <div className={styles.account}>{ shortenIfAddress(account) }</div>
+        </div>
+        <div className={dropdownStyles.item} onClick={handleItemClick}>
+          <BoxIcon src='/metamask.svg' alt='Metamask logo' />
+          <div className={styles.account}>{ shortenIfAddress(account) }</div>
+        </div>
       </div>
-      <div className={dropdownStyles.item} onClick={handleItemClick}>
-        <BoxIcon src='/metamask.svg' alt='Metamask logo' />
-        <div className={styles.account}>{ shortenIfAddress(account) }</div>
-      </div>
-      <div className={dropdownStyles.item} onClick={handleItemClick}>
-        <BoxIcon src='/metamask.svg' alt='Metamask logo' />
-        <div className={styles.account}>{ shortenIfAddress(account) }</div>
-      </div>
-    </div>
     </div>
   )
 }

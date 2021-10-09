@@ -17,6 +17,7 @@
 }
 
 .item {
+  position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -28,4 +29,26 @@
 
 .item:hover {
   background-color: #0070f3;
+}
+
+.disabledItem {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background-color: #37393f;
+}
+
+.soon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  font-size: 8px;
+  font-style: italic;
+  font-weight: 200;
 }
