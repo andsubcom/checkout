@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <p style={{ fontSize: '18px', color: '#6c86ad'}}>No product id</p>
+    <p style={{ fontSize: '20px'}}>{'Go to checkout.andsub.com/{prodct_id}'}</p>
   )
 }
 
