@@ -1,35 +1,45 @@
-.layout {
-  align-self: stretch;
-  flex-grow: 1;
+.subscribe {
+  align-self: center;
+
+  color: #6c86ad;
+  font-size: 18px;
+
+  margin-top: 20px;
+}
+
+.product {
+  align-self: center;
 
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-items: stretch;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-top: 6px;
 }
 
-.side {
-  flex-grow: 1;
-  flex-basis: 0;
-  min-width: 450px;
+.name {
+  color: white;
+  font-size: 32px;
 
+  padding-left: 10px;
+}
+
+.pricebox {
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
 
-  padding: 40px;
+  padding: 0px 0px;
 }
 
-.left {
-  /* background-color: black; */
+.price {
+  font-size: 32px;
 }
 
-.right {
-  /* background-color: white; */
-}
-
-.divider {
-  background-color: hsla(0, 0%, 100%, .2);
-  width: 1px;
+.period {
+  font-size: 20px;
+  color: #6c86ad;
+  padding-left: 6px;
 }

@@ -12,31 +12,6 @@ const hubAddress = process.env.andsubHubAddress
 const token = process.env.token
 
 
-// product supposed to be non-null
-const Product = ({ product }) => {
-  var name = 'Hodler Pro – Monthly' // TODO: remove filling empty data when contract updated
-  var price = `${utils.formatUnits(product.amount, token.decimals)} ${token.symbol}`
-  var period = formatPeriod(product.period.toNumber())
-
-  return (
-    <>
-      <div className={styles.subscribe}>Subscribe to</div>
-      <div className={styles.product}>
-        {name && <BoxIcon src='/product-logo.png' alt='Product logo' />}
-        <div className={styles.name}>{name}</div>
-      </div>
-
-      <Space size='35px' />
-
-      <div className={styles.pricebox}>
-        <div className={styles.price}>{price}</div>
-        <div className={styles.period}>{`per ${period}`}</div>
-      </div>
-    </>
-  )
-}
-
-
 const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loading }) => {
   const click = loading ? null : (hasAllowance ? subscribeClick : approveClick)
 
@@ -120,7 +95,6 @@ const Widget = ({ pid, product }) => {
 
   return (
     <div className={styles.widget}>
-      <Product product={product} />
       <Space size='45px' />
 
       <Separator text='Connect wallet' />

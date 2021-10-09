@@ -1,9 +1,9 @@
-import { useEthers } from '@usedapp/core'
 import Widget from 'components/Widget'
 import Subscribed from 'components/Subscribed'
 import { useRouter } from 'next/router'
 import { useIsSubscribed, useSubscriptionInfo } from 'src/hooks'
-import styles from 'styles/Product.module.css'
+import styles from 'styles/Page.module.css'
+import Product from 'components/Product'
 
 
 const Checkout = () => {
@@ -31,7 +31,7 @@ const Checkout = () => {
     {!loading && !productNotFound &&
       <>
         <div className={`${styles.side} ${styles.left}`}>
-          {/* Product & NFT */}
+          <Product product={product} />
         </div>
         <div className={styles.divider} />
         <div className={`${styles.side} ${styles.right}`}>
