@@ -29,13 +29,16 @@ function AccountSelect(props) {
       </div>
     <div className={dropdownStyles.container} style={{ display: isOpen ? 'block' : 'none' }}>
       <div className={dropdownStyles.item} onClick={handleItemClick}>
-        <p>Test</p>
+        <BoxIcon src='/metamask.svg' alt='Metamask logo' />
+        <div className={styles.account}>{ shortenIfAddress(account) }</div>
       </div>
       <div className={dropdownStyles.item} onClick={handleItemClick}>
-        <p>Test</p>
+        <BoxIcon src='/metamask.svg' alt='Metamask logo' />
+        <div className={styles.account}>{ shortenIfAddress(account) }</div>
       </div>
       <div className={dropdownStyles.item} onClick={handleItemClick}>
-        <p>Test</p>
+        <BoxIcon src='/metamask.svg' alt='Metamask logo' />
+        <div className={styles.account}>{ shortenIfAddress(account) }</div>
       </div>
     </div>
     </div>
