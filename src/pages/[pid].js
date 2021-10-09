@@ -16,6 +16,8 @@ const Checkout = () => {
   const product = useSubscriptionInfo(pid)
   const loading = typeof isSubscribed === 'undefined' || !product
 
+  // TODO: check by id/slug/something
+  const productNotFound = product && product.amount == 0
 
   // TODO: testing subscribed layout
   // if (typeof isSubscribed !== 'undefined') {
@@ -24,10 +26,13 @@ const Checkout = () => {
 
   return <>
     {loading && <span></span>}
-    {!loading &&
+    {!loading && productNotFound && 
+      <p>Product <span className='highlightSpan'>{pid}</span> not found</p>
+    }
+    {!loading && !productNotFound && 
       (isSubscribed
         ? <Subscribed pid={pid} product={product} />
-        : <Widget pid={pid} product={product}/>
+        : <Widget pid={pid} product={product} />
       )
     }
   </>

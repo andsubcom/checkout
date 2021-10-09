@@ -34,22 +34,22 @@ const Subscribed = ({ pid, product }) => {
 
       <p className={styles.text}>
         {'You\'re charged '}
-        <span className={styles.highlightSpan}>{`${cost} ${token.symbol} `}</span>
+        <span className='highlightSpan'>{`${cost} ${token.symbol} `}</span>
         per
-        <span className={styles.highlightSpan}>{` ${period}`}</span>
+        <span className='highlightSpan'>{` ${period}`}</span>
         .
       </p>
 
       <p className={styles.text}>
         {'You\'re subscribed to '}
-        <span className={styles.highlightSpan}>{name}</span>
+        <span className='highlightSpan'>{name}</span>
         {' on '}
-        <span className={styles.highlightSpan}>{network} network</span>
+        <span className='highlightSpan'>{network} network</span>
         {' from '}
         <span className={styles.codeSpan}>{account}</span>
         {'. '}
         <a
-          className={styles.highlightSpan} style={{ cursor: 'pointer' }}
+          className='highlightSpan' style={{ cursor: 'pointer' }}
           href={`https://ropsten.rarible.com/user/${account}?tab=owned`}
           rel="noopener noreferrer" target='_blank' >
           Check
