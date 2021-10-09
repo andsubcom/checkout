@@ -1,7 +1,6 @@
 import { shortenIfAddress, useEthers, useTokenBalance } from '@usedapp/core'
 import { useSendSubscribe, useSendApproveUnlimited, useTokenAllowance } from 'src/hooks'
 import { useState } from 'react'
-import { formatPeriod } from 'src/utils'
 import { ethers, utils } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'

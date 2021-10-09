@@ -1,15 +1,20 @@
-.subscribe {
-  align-self: center;
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 
+  border-radius: 4px;
+  /* box-shadow: 0 0 0 0.9px #6c86ad,0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05); */
+}
+
+.subscribe {
   color: #6c86ad;
   font-size: 18px;
-
   margin-top: 20px;
 }
 
 .product {
-  align-self: center;
-
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -41,5 +46,4 @@
 .period {
   font-size: 20px;
   color: #6c86ad;
-  padding-left: 6px;
 }

@@ -12,7 +12,7 @@ const Product = ({ product }) => {
   var period = formatPeriod(product.period.toNumber())
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.subscribe}>Subscribe to</div>
       <div className={styles.product}>
         {name && <Image
@@ -26,7 +26,9 @@ const Product = ({ product }) => {
         <div className={styles.price}>{price}</div>
         <div className={styles.period}>{`per ${period}`}</div>
       </div>
-    </>
+
+      <p>Powered by Andsub</p>
+    </div>
   )
 }
 
