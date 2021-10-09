@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useContractCall, useContractFunction, useEthers } from '@usedapp/core'
 import { Interface } from '@ethersproject/abi'
 import ANDSUB_HUB_ABI from 'public/abi/SubscriptionsHub.json'
-import ERC20_ABI from 'public/abi/ERC20.json'
+import MINTABLE_ERC20_ABI from 'public/abi/MintableERC20.json'
 import { fetchSubscriptions } from './api'
 import { Contract } from '@ethersproject/contracts'
 import { utils } from 'ethers'
@@ -49,7 +49,7 @@ export const useSubscriptions = function (organizationId) {
 
 export const useTokenAllowance = function (tokenAddress, account) {
   const [allowance] = useContractCall(tokenAddress && account && {
-    abi: new Interface(ERC20_ABI),
+    abi: new Interface(MINTABLE_ERC20_ABI),
     address: tokenAddress,
     method: 'allowance',
     args: [account, ANDSUB_HUB_ADDRESS]
@@ -59,7 +59,7 @@ export const useTokenAllowance = function (tokenAddress, account) {
 }
 
 export const useSendApproveUnlimited = function (tokenAddress) {
-  const abi = new utils.Interface(ERC20_ABI)
+  const abi = new utils.Interface(MINTABLE_ERC20_ABI)
   const contract = new Contract(tokenAddress, abi)
   return useContractFunction(contract, 'approve', { transactionName: 'Approve'})
 }
@@ -74,4 +74,10 @@ export const useSendCancel = function () {
   const abi = new utils.Interface(ANDSUB_HUB_ABI)
   const contract = new Contract(ANDSUB_HUB_ADDRESS, abi)
   return useContractFunction(contract, 'cancel', { transactionName: 'Cancel Subscription'})
+}
+
+export const useSendMintTokens = function (tokenAddress) {
+  const abi = new utils.Interface(MINTABLE_ERC20_ABI)
+  const contract = new Contract(tokenAddress, abi)
+  return useContractFunction(contract, 'mint', { transactionName: 'Mint'})
 }
