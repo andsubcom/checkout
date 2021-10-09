@@ -1,7 +1,6 @@
 
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
-import { useEthers, shortenIfAddress } from '@usedapp/core'
 
 import BoxIcon from './BoxIcon'
 import BoxDropdown from './BoxDropdown'
@@ -12,7 +11,6 @@ import dropdownStyles from 'styles/Dropdown.module.css'
 import { useOnClickOutside } from 'src/utils'
 
 function NetworkSelect(props) {
-  const { account } = useEthers()
   const ref = useRef()
   const [isOpen, setIsOpen] = useState(false)
 
