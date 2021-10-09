@@ -3,13 +3,16 @@ import { utils } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Product.module.css'
 
-const token = process.env.token
 
 // product supposed to be non-null
 const Product = ({ product }) => {
-  var name = 'Hodler Pro – Monthly' // TODO: remove filling empty data when contract updated
-  var price = `${utils.formatUnits(product.amount, token.decimals)} ${token.symbol}`
-  var period = formatPeriod(product.period.toNumber())
+  // TODO: get token address from product
+  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
+  const token = process.env.tokens[payableToken]
+
+  const name = 'Hodler Pro – Monthly' // TODO: remove filling empty data when contract updated
+  const price = `${utils.formatUnits(product.amount, token.decimals)} ${token.symbol}`
+  const period = formatPeriod(product.period.toNumber())
 
   return (
     <div className={styles.container}>

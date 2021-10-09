@@ -6,7 +6,10 @@ import { useSendCancel } from 'src/hooks'
 
 
 const Subscribed = ({ pid, product }) => {
-  const token = process.env.token
+  // TODO: get token address from product
+  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
+  const token = process.env.tokens[payableToken]
+
   const account = '0x66814090cCA5f4cFf0262720DC82F640e6E0663f'
   const network = 'Ropsten'
   const name = 'Hodler Pro – Monthly'

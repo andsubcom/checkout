@@ -8,7 +8,6 @@ import ProgressBar from 'components/ProgressBar'
 
 
 const hubAddress = process.env.andsubHubAddress
-const token = process.env.token
 
 
 const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loading }) => {
@@ -66,7 +65,10 @@ const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
 const Widget = ({ pid, product }) => {
-  const selectedToken = token
+  // TODO: get token address from product
+  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
+  const selectedToken = process.env.tokens[payableToken]
+
   const { account } = useEthers()
 
   const [hasPendingTransaction, setHasPendingTransaction] = useState(false)
