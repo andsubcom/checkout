@@ -61,7 +61,7 @@ const Product = ({ product }) => {
         <div className={styles.name}>{name}</div>
       </div>
 
-      <div className={styles.pricebox} style={{ marginTop: '35px' }}>
+      <div className={styles.pricebox} style={{ marginTop: '15px' }}>
         <div className={styles.price}>{price}</div>
         <div className={styles.period}>{`per ${period}`}</div>
       </div>
