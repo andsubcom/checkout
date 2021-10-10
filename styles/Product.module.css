@@ -8,7 +8,6 @@
   border-radius: 4px;
   /* box-shadow: 0 0 0 0.9px #6c86ad,0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05); */
 }
-
 .subscribe {
   color: rgb(68, 68, 68);
   font-size: 18px;
@@ -22,6 +21,27 @@
   align-items: center;
 
   margin-top: 6px;
+}
+
+.nftImage {
+  transition: transform 0.7s ease-out, box-shadow 0.7s ease-out;
+  max-width: 350px;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 20px;
+  margin-top: 30px;
+  box-shadow: 10px 10px 20px #00000044;
+}
+
+.nftImage:hover {
+  transform: scale(1.05);
+  box-shadow: 15px 15px 20px #00000066
+}
+
+.nftDescription {
+  margin-top: 30px;
+  color: rgb(68, 68, 68);
+  font-size: 18px;
 }
 
 .name {
