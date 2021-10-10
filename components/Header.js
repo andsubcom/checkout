@@ -5,7 +5,7 @@ import styles from 'styles/Header.module.css'
 const Account = () => {
   const { activateBrowserWallet, account, chainId, active } = useEthers()
   const connected = !!chainId
-  console.log('chainId =', chainId, 'account =', account, 'active =', active)
+  console.log('chainId =', chainId, 'account =', account, 'active =', active, 'library =', library)
 
   return (
     <div className={styles.container}>
