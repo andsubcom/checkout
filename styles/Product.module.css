@@ -1,5 +1,6 @@
 .container {
   display: flex;
+
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: flex-start;
@@ -9,7 +10,7 @@
 }
 
 .subscribe {
-  color: #6c86ad;
+  color: rgb(68, 68, 68);
   font-size: 18px;
   margin-top: 20px;
 }
@@ -24,7 +25,7 @@
 }
 
 .name {
-  color: #4c668d;
+  color: black;
   font-size: 32px;
 
   padding-left: 10px;
@@ -34,23 +35,24 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 
   padding: 0px 0px;
 }
 
 .price {
   font-size: 32px;
+  color: black;
 }
 
 .period {
   font-size: 20px;
-  color: #6c86ad;
+  color: rgb(68, 68, 68);
 }
 
 .mint, .powered {
   font-size: 16px;
-  color: #6c86ad;
+  color: rgb(68, 68, 68);
   margin: 10px 0px 0px 0px;
 }
 

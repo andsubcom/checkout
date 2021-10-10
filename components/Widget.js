@@ -45,9 +45,9 @@ const Separator = ({ text }) => {
       alignItems: 'center',
       padding: '0px 0px 0px 0px'
     }}>
-      <div style={{ height: '1px', background: '#4e6180', flexGrow: '1' }} />
-      <div style={{ padding: '0px 15px', color: '#4e6180', fontSize: '16px' }}>{text}</div>
-      <div style={{ height: '1px', background: '#4e6180', flexGrow: '1' }} />
+      <div style={{ height: '1px', background: 'rgb(212, 212, 212)', flexGrow: '1' }} />
+      <div style={{ padding: '0px 15px', color: 'rgb(212, 212, 212)', fontSize: '16px' }}>{text}</div>
+      <div style={{ height: '1px', background: 'rgb(212, 212, 212)', flexGrow: '1' }} />
     </div>
   )
 }
@@ -106,7 +106,7 @@ const Widget = ({ pid, product }) => {
 
       { ['Mining', 'Fail'].includes(subscribeState.status) && 
         <a className={styles.etherLink} href={`https://ropsten.etherscan.io/tx/${subscribeState?.transaction?.hash}`} target='_blank' rel='noreferrer'>
-          View transaction<span style={{ margin: '4px 0px 0px 6px' }}><Document width='14px' height='14px' set='light' primaryColor='#6c86ad'/></span>
+          View transaction<span style={{ margin: '4px 0px 0px 6px' }}><Document width='14px' height='14px' set='light' primaryColor='#4459AC'/></span>
         </a> 
       }
 

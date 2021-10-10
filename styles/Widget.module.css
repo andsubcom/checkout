@@ -9,7 +9,7 @@
   
   padding: 15px 20px 0px 20px;
   border-radius: 4px;
-  box-shadow: 0 0 0 0.9px #6c86ad,0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05);
+  box-shadow: 0 0 0 0.9px rgb(212, 212, 212),0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05);
 }
 
 .logo {
@@ -19,7 +19,7 @@
 }
 
 .boxtitle {
-  color: #6c86ad;
+  color: rgb(112, 112, 112);
   font-size: 16px;
   padding-bottom: 10px;
 }
@@ -32,7 +32,7 @@
 
   padding: 0px 10px 0px 15px;
   border-radius: 4px;
-  box-shadow: 0 0 0 1px #6c86ad,0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05);
+  box-shadow: 0 0 0 1px rgb(212, 212, 212),0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05);
 }
 
 .accountbox, .nextworkbox {
@@ -80,7 +80,7 @@
 }
 
 .coinname {
-  color: #6c86ad;
+  color: #4459AC;
   font-size: 16px;
 }
 
@@ -134,7 +134,7 @@
   flex-direction: row;
   align-items: center;
   margin-top: 16px;
-  color: #6c86ad;
+  color: #4459AC;
   font-size: 16px;;
 }
 

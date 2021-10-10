@@ -3,35 +3,34 @@
   flex-grow: 1;
 
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
+  flex-flow: row;
+  justify-content: space-around;
   align-items: stretch;
 }
 
 .product {
   flex-grow: 1;
   flex-basis: 0;
-  min-width: 450px;
-  max-width: 800px;
 
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
 
-  margin: 50px 80px;
+  background-color: #fff;
+  padding-left: 100px;
+  padding-bottom: 150px;
 }
 
 .payment {
   flex-grow: 1;
   flex-basis: 0;
-  min-width: 450px;
-  max-width: 800px;
 
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: space-around;
+  align-items: center;
 
-  margin: 50px 80px;
+  padding-right: 100px;
+  padding-bottom: 100px;
 }
 
 .left {
