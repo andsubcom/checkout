@@ -3,16 +3,16 @@ import { networkNameById } from 'src/utils'
 import styles from 'styles/Header.module.css'
 
 const Account = () => {
-  const { activateBrowserWallet, account, chainId, active } = useEthers()
+  const { activateBrowserWallet, account, chainId, active, library } = useEthers()
   const connected = !!chainId
-  console.log('chainId =', chainId, 'account =', account, 'active =', active)
+  // console.log('chainId =', chainId, 'account =', account, 'active =', active, 'library =', library)
 
   return (
     <div className={styles.container}>
       {connected && <div className={styles.whiteNetwork}>{networkNameById(chainId)}</div>}
       {/* {!networkCorrect && account  && <div className={styles.network}>{`Swtich to Ropsten`}</div>} */}
       {connected && account && <div className={styles.account}>{account}</div>}
-      {connected && !account && <button className={styles.button} onClick={() => { activateBrowserWallet() }}>Connect Wallet</button>}
+      {!account && <button className={styles.button} onClick={() => { activateBrowserWallet() }}>Connect Wallet</button>}
     </div>
   )
 }
