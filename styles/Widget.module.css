@@ -107,6 +107,12 @@
   align-items: center;
 }
 
+.button:hover,
+.button:focus,
+.button:active {
+  background-color: #3d3d3d;
+}
+
 .buttonLoading {
   cursor: unset;
 }
@@ -114,7 +120,7 @@
 .buttonLoading:hover,
 .buttonLoading:focus,
 .buttonLoading:active {
-  background-color: #0070f3;
+  background-color: #3d3d3d;
 }
 
 .hint {

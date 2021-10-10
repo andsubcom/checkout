@@ -34,7 +34,7 @@ button {
 button:hover,
 button:focus,
 button:active {
-  background-color: #0060ce;
+  background-color: #1e1e1e;
 }
 
 .code {
@@ -47,5 +47,5 @@ button:active {
 }
 
 .highlightSpan {
-  color: #0070f3;
+  color: #2d2d2d;
 }
