@@ -13,12 +13,12 @@
   flex-basis: 0;
 
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-start;
 
   background-color: #fff;
-  padding-left: 100px;
-  padding-bottom: 150px;
+  padding-right: 200px;
+  padding-top: 120px;
 }
 
 .payment {
@@ -26,19 +26,9 @@
   flex-basis: 0;
 
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  padding-right: 100px;
-  padding-bottom: 100px;
-}
-
-.left {
-  align-items: flex-end;
-  /* background-color: black; */
-}
-
-.right {
+  justify-content: flex-start;
   align-items: flex-start;
-  /* background-color: white; */
+
+  padding-left: 200px;
+  padding-top: 120px;
 }
