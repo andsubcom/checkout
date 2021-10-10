@@ -27,24 +27,34 @@ function NetworkSelect(props) {
   return (
     <div className={dropdownStyles.wrapper} ref={ref}>
       <div className={styles.nextworkbox} onClick={handleSelectClick}>
-        <BoxIcon src='/eth-logo.svg' alt='Ethereum logo' />
-        <div className={styles.networkname}>Ethereum</div>
+        <BoxIcon src='/ethereum.svg' alt='Ethereum logo' />
+        <div className={styles.networkname}>Ropsten</div>
         <BoxDropdown />
       </div>
       <div className={dropdownStyles.container} style={{ display: isOpen ? 'block' : 'none' }}>
         <div className={dropdownStyles.item} onClick={handleItemClick}>
-          <BoxIcon src='/eth-logo.svg' alt='Ethereum logo' />
-          <div className={styles.networkname}>Ethereum 1</div>
+          <BoxIcon src='/ethereum.svg' alt='Ethereum logo' />
+          <div className={styles.networkname}>Ropsten</div>
         </div>
         <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
-          <BoxIcon src='/eth-logo.svg' alt='Ethereum logo' />
-          <div className={styles.networkname}>Ethereum 2</div>
-          <div className={styles.soon}>soon</div>
+          <BoxIcon src='/bsc.svg' alt='Ethereum logo' />
+          <div className={styles.networkname}>BSC Mainnet</div>
+          <div className={dropdownStyles.soon}>soon</div>
         </div>
         <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
-          <BoxIcon src='/eth-logo.svg' alt='Ethereum logo' />
-          <div className={styles.networkname}>Ethereum 3</div>
-          <div className={styles.soon}>soon</div> 
+          <BoxIcon src='/polygon.svg' alt='Ethereum logo' />
+          <div className={styles.networkname}>Polygon</div>
+          <div className={dropdownStyles.soon}>soon</div> 
+        </div>
+        <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
+          <BoxIcon src='/optimism.svg' alt='Ethereum logo' />
+          <div className={styles.networkname}>Optimism</div>
+          <div className={dropdownStyles.soon}>soon</div> 
+        </div>
+        <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
+          <BoxIcon src='/arbitrum.svg' alt='Ethereum logo' />
+          <div className={styles.networkname}>Arbitrum</div>
+          <div className={dropdownStyles.soon}>soon</div> 
         </div>
       </div>
     </div>

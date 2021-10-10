@@ -138,6 +138,10 @@
   font-size: 16px;;
 }
 
+.etherLink:hover {
+  text-decoration: underline;
+}
+
 .errorMessage {
   color: #c54d4d;
   font-size: 14px;

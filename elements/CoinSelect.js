@@ -12,7 +12,10 @@ import dropdownStyles from 'styles/Dropdown.module.css'
 import { useOnClickOutside } from 'src/utils'
 
 function CoinSelect({selectedToken, hasAllowance}) {
+  console.log('process.env.tokens', process.env.tokens, selectedToken)
   const { account } = useEthers()
+  const otherTokens = Object.keys(process.env.tokens).filter(key => key !== selectedToken.address).map((key) => {return process.env.tokens[key]})
+  console.log('otherTokens', otherTokens)
   const tokenBalance = useTokenBalance(selectedToken.address, account)
   const tokenBalanceFormatted = tokenBalance ? utils.formatUnits(tokenBalance, selectedToken.decimals) : undefined
 
@@ -46,19 +49,18 @@ function CoinSelect({selectedToken, hasAllowance}) {
       </div>
       <div className={dropdownStyles.container} style={{ display: isOpen ? 'block' : 'none', top: '64px' }}>
         <div className={dropdownStyles.item} onClick={handleItemClick}>
-          <BoxIcon src='/coin-logo.png' alt='Coin logo' />
-          <div className={styles.networkname}>USDX</div>
+          <BoxIcon src={selectedToken.icon} alt='Coin logo' />
+          <div className={styles.networkname}>{selectedToken.symbol}</div>
         </div>
-        <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
-        <BoxIcon src='/coin-logo.png' alt='Coin logo' />
-          <div className={styles.networkname}>USDY</div>
-          <div className={styles.soon}>soon</div>
-        </div>
-        <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
-        <BoxIcon src='/coin-logo.png' alt='Coin logo' />
-          <div className={styles.networkname}>USDZ</div>
-          <div className={styles.soon}>soon</div> 
-        </div>
+        { otherTokens.map( token => {
+          return (
+            <div key={token.address} className={dropdownStyles.disabledItem} onClick={handleItemClick}>
+              <BoxIcon src={token.icon} alt='Coin logo' />
+              <div className={styles.networkname}>{token.symbol}</div>
+              <div className={dropdownStyles.soon}>conversion fee</div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
