@@ -9,13 +9,13 @@ import { useEthers } from '@usedapp/core'
 
 
 const Checkout = () => {
-  const { activateBrowserWallet } = useEthers()
+  const { library, activateBrowserWallet } = useEthers()
 
   useEffect(() => {
     console.log('activateBrowserWallet')
     setTimeout(() => {
       activateBrowserWallet()
-    }, 1000)    
+    }, 200)
   }, [])
 
   const router = useRouter()
