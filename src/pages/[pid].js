@@ -5,6 +5,7 @@ import { useIsSubscribed, useProductInfo } from 'src/hooks'
 import styles from 'styles/Page.module.css'
 import Product from 'components/Product'
 import { useEffect } from 'react'
+import { useEthers } from '@usedapp/core'
 
 
 const Checkout = () => {
