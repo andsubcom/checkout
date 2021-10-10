@@ -36,15 +36,15 @@ const Product = ({ product }) => {
   }
 
   useEffect(() => {
+    console.log(metadataUrl)
     fetch(metadataUrl)
         .then(res => res.json())
         .then(
             (metadata) => {
-              // setIsLoaded(true)
+              console.log(metadata)
               setMetadata(metadata)
             },
             (error) => {
-              // setIsLoaded(true)
               setError(error)
             }
         )

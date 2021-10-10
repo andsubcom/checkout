@@ -82,20 +82,20 @@ const Widget = ({ pid, product }) => {
 
   return (
     <div className={styles.widget}>
-      <Space size='45px' />
+      <Space size='30px' />
 
       <Separator text='Connect wallet' />
-      <Space size='20px' />
+      <Space size='30px' />
 
       <BoxTitle text={'Account'} />
       <AccountSelect />
 
-      <Space size='25px' />
+      <Space size='30px' />
 
       <BoxTitle text='Network' />
       <NetworkSelect />
 
-      <Space size='50px' />
+      <Space size='60px' />
       <Separator text='Subscribe with crypto' />
       <Space size='20px' />
 

@@ -80,7 +80,7 @@
 }
 
 .coinname {
-  color: #4459AC;
+  color: rgb(68, 68, 68);
   font-size: 16px;
 }
 
@@ -107,6 +107,12 @@
   align-items: center;
 }
 
+.button:hover,
+.button:focus,
+.button:active {
+  background-color: #3d3d3d;
+}
+
 .buttonLoading {
   cursor: unset;
 }
@@ -114,14 +120,14 @@
 .buttonLoading:hover,
 .buttonLoading:focus,
 .buttonLoading:active {
-  background-color: #0070f3;
+  background-color: #3d3d3d;
 }
 
 .hint {
   align-self: center;
   font-size: 12px;
   padding: 14px 10px 14px 10px;
-  color: #4e6180;
+  color: rgb(200, 200, 200);
   text-align: center;
 }
 

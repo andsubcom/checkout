@@ -57,7 +57,7 @@ function CoinSelect({selectedToken, hasAllowance}) {
             <div key={token.address} className={dropdownStyles.disabledItem} onClick={handleItemClick}>
               <BoxIcon src={token.icon} alt='Coin logo' />
               <div className={styles.networkname}>{token.symbol}</div>
-              <div className={dropdownStyles.soon}>conversion fee</div>
+              <div className={dropdownStyles.soon}>exchange fee</div>
             </div>
           )
         })}
