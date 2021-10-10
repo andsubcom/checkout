@@ -13,7 +13,9 @@ const Checkout = () => {
 
   useEffect(() => {
     console.log('activateBrowserWallet')
-    activateBrowserWallet()
+    setTimeout(() => {
+      activateBrowserWallet()
+    }, 1000)    
   }, [])
 
   const router = useRouter()
