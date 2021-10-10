@@ -4,9 +4,17 @@ import { useRouter } from 'next/router'
 import { useIsSubscribed, useProductInfo } from 'src/hooks'
 import styles from 'styles/Page.module.css'
 import Product from 'components/Product'
+import { useEffect } from 'react'
 
 
 const Checkout = () => {
+  const { activateBrowserWallet } = useEthers()
+
+  useEffect(() => {
+    console.log('activateBrowserWallet')
+    activateBrowserWallet()
+  }, [])
+
   const router = useRouter()
   const { pid } = router.query
 
