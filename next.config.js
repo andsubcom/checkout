@@ -1,7 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   env: {
-    andsubHubAddress: '0xF61C6cD6FEa4E407651d94837816aD0f8be350E5',
     tokens: {
       '0xcA87D2bfA59cbcc686c622d045EebE1422c81ca6': {
         'address': '0xcA87D2bfA59cbcc686c622d045EebE1422c81ca6',

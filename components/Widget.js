@@ -1,14 +1,15 @@
-import { useEthers, useTokenBalance } from '@usedapp/core'
+import { useEthers } from '@usedapp/core'
 import { useSendSubscribe, useSendApproveUnlimited, useTokenAllowance } from 'src/hooks'
 import { useState } from 'react'
-import { ethers, utils } from 'ethers'
+import { ethers } from 'ethers'
 import Image from 'next/image'
 import styles from 'styles/Widget.module.css'
 import ProgressBar from 'components/ProgressBar'
 
 import { AccountSelect, CoinSelect, NetworkSelect } from 'elements'
 
-const hubAddress = process.env.andsubHubAddress
+
+const hubAddress = process.env.NEXT_PUBLIC_ANDSUB_ADDRESS
 
 
 const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loading }) => {
@@ -54,9 +55,7 @@ const Space = ({ size }) => <div style={{ height: `${size}` }} />
 
 
 const Widget = ({ pid, product }) => {
-  // TODO: get token address from product
-  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
-  const selectedToken = process.env.tokens[payableToken]
+  const selectedToken = process.env.tokens[product.payableToken]
 
   const { account } = useEthers()
 

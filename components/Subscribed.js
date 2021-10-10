@@ -3,18 +3,13 @@ import { formatPeriod } from 'src/utils'
 import Image from 'next/image'
 import styles from 'styles/Subscribed.module.css'
 import { useSendCancel } from 'src/hooks'
+import { useEthers } from '@usedapp/core'
 
 
 const Subscribed = ({ pid, product }) => {
-  // TODO: get token address from product
-  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
-  const token = process.env.tokens[payableToken]
-
-  const account = '0x66814090cCA5f4cFf0262720DC82F640e6E0663f'
+  const token = process.env.tokens[product.payableToken]
+  const { account } = useEthers()
   const network = 'Ropsten'
-  const name = 'Hodler Pro – Monthly'
-  const symbols = 18
-
   const cost = utils.formatUnits(product.amount, token.decimals)
   const period = formatPeriod(product.period.toNumber())
 
@@ -25,7 +20,6 @@ const Subscribed = ({ pid, product }) => {
     sendCancel(pid)
   }
   // TODO: hide loader, update data when cancel mined
-
 
   return (
     <div className={styles.content}>
@@ -45,7 +39,7 @@ const Subscribed = ({ pid, product }) => {
 
       <p className={styles.text}>
         {'You\'re subscribed to '}
-        <span className='highlightSpan'>{name}</span>
+        <span className='highlightSpan'>{product.name}</span>
         {' on '}
         <span className='highlightSpan'>{network} network</span>
         {' from '}
