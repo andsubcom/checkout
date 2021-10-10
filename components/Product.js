@@ -8,13 +8,11 @@ import { useEthers } from '@usedapp/core'
 
 // product supposed to be non-null
 const Product = ({ product }) => {
-  const { account } = useEthers()
+  const token = process.env.tokens[product.payableToken]
 
-  // TODO: get token address from product
-  const payableToken = '0x6ef6f7ca5fb523c0cf8f793cd9c3eef228e86679'
-  const token = process.env.tokens[payableToken]
+  const { account } = useEthers()  
 
-  const name = 'Hodler Pro – Monthly' // TODO: remove filling empty data when contract updated
+  const name = product.name
   const price = `${utils.formatUnits(product.amount, token.decimals)} ${token.symbol}`
   const period = formatPeriod(product.period.toNumber())
 
@@ -30,10 +28,10 @@ const Product = ({ product }) => {
     <div className={styles.container}>
       <div className={styles.subscribe}>Subscribe to</div>
       <div className={styles.product}>
-        {name && <Image
+        <Image
           src='/product-logo.png' alt='Product logo'
           width={24} height={24}
-        />}
+        />
         <div className={styles.name}>{name}</div>
       </div>
 
