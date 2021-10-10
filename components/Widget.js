@@ -8,7 +8,7 @@ import ProgressBar from 'components/ProgressBar'
 
 import { AccountSelect, CoinSelect, NetworkSelect } from 'elements'
 
-const hubAddress = process.env.andsubHubAddress
+const hubAddress = process.env.NEXT_PUBLIC_ANDSUB_ADDRESS
 
 
 const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loading }) => {
