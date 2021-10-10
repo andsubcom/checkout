@@ -128,3 +128,19 @@
 .progressBar {
   margin: 0px 0px 0px 0px;
 }
+
+.etherLink {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+  color: #6c86ad;
+  font-size: 16px;;
+}
+
+.errorMessage {
+  color: #c54d4d;
+  font-size: 14px;
+  margin-top: 4px;
+  margin-bottom: -6px;
+}

@@ -7,6 +7,7 @@ import styles from 'styles/Widget.module.css'
 import ProgressBar from 'components/ProgressBar'
 
 import { AccountSelect, CoinSelect, NetworkSelect } from 'elements'
+import { Search, Send, Document } from 'react-iconly'
 
 const hubAddress = process.env.andsubHubAddress
 
@@ -78,7 +79,7 @@ const Widget = ({ pid, product }) => {
   if (hasPendingTransaction != newHasPendingTransaction) {
     setHasPendingTransaction(newHasPendingTransaction)
   }
-  console.log('approveState.status =', approveState.status, 'subscribeState.status =', subscribeState.status)
+  console.log('approveState', approveState.status, 'subscribeState.status =', subscribeState)
 
   return (
     <div className={styles.widget}>
@@ -103,6 +104,16 @@ const Widget = ({ pid, product }) => {
       <CoinSelect selectedToken={selectedToken} hasAllowance={hasAllowance} />
 
       <Button hasAllowance={hasAllowance} subscribeClick={subscribeClick} approveClick={approveClick} selectedToken={selectedToken} loading={newHasPendingTransaction} />
+
+      { ['Mining', 'Fail'].includes(subscribeState.status) && 
+        <a className={styles.etherLink} href={`https://ropsten.etherscan.io/tx/${subscribeState?.transaction?.hash}`} target='_blank' rel='noreferrer'>
+          View transaction<span style={{ margin: '4px 0px 0px 6px' }}><Document width='14px' height='14px' set='light' primaryColor='#6c86ad'/></span>
+        </a> 
+      }
+
+      { ['Fail', 'Exception'].includes(subscribeState.status) && 
+        <div className={styles.errorMessage}>{subscribeState.errorMessage}</div>
+      }
 
       <div className={styles.hint}>
         {
