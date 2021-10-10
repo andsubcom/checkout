@@ -3,7 +3,7 @@ import { networkNameById } from 'src/utils'
 import styles from 'styles/Header.module.css'
 
 const Account = () => {
-  const { activateBrowserWallet, account, chainId, active } = useEthers()
+  const { activateBrowserWallet, account, chainId, active, library } = useEthers()
   const connected = !!chainId
   console.log('chainId =', chainId, 'account =', account, 'active =', active, 'library =', library)
 
