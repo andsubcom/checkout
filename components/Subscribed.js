@@ -54,7 +54,6 @@ const Subscribed = ({ pid, product }) => {
         {' a subscription NFT in your wallet.'}
       </p>
 
-      <a href='https://demo-andsub.vercel.app/' className={styles.cancel}>Back to the website</a>
       <p className={styles.cancel} style={{marginTop: '12px'}}>Cancel your subscription</p>
     </div>
   )
