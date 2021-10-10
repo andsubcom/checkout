@@ -8,7 +8,7 @@ import { Contract } from '@ethersproject/contracts'
 import { utils } from 'ethers'
 
 
-const ANDSUB_HUB_ADDRESS = process.env.andsubHubAddress
+const ANDSUB_HUB_ADDRESS = process.env.NEXT_PUBLIC_ANDSUB_ADDRESS
 
 
 export const useSubscriptionInfo = (productId) => useContractCall({
