@@ -54,4 +54,10 @@ const Checkout = () => {
   </div>
 }
 
+Checkout.getInitialProps = () => {
+  return {
+    
+  }
+}
+
 export default Checkout
