@@ -68,7 +68,7 @@ const Product = ({ product }) => {
 
       {imageUrl && <div>
         <img src={imageUrl} className={styles.nftImage} alt='NFT image'/>
-        { metadata && <div className={styles.nftDescription}> {metadata.description} </div> }
+        { metadata.description && <div className={styles.nftDescription}> {metadata.description} </div> }
       </div>}
 
 
