@@ -11,7 +11,7 @@
 
 .title {
   border: none;
-  color: white;
+  color: #1f1f1f;
   padding: 0px 0px;
   font-size: 24px;
   font-weight: bold;
@@ -60,7 +60,7 @@
   align-items: center;
   padding: 0px 15px;
   margin-left: 20px;
-  background-color: #37393f;
+  background-color: #efefef;
   border-radius: 4px;
   font-size: 14px;
   white-space: nowrap;
@@ -70,5 +70,5 @@
 
 .account:hover,
 .account:focus {
-  background-color: rgb(49, 51, 56);
+  background-color: #e0e0e0;
 }
