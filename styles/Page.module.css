@@ -3,20 +3,22 @@
   flex-grow: 1;
 
   display: flex;
-  flex-flow: row;
-  justify-content: space-between;
+  flex-flow: row nowrap;
+  justify-content: center;
   align-items: stretch;
 }
 
 .product {
   flex-grow: 1;
   flex-basis: 0;
+  min-width: 450px;
+  max-width: 800px;
 
   display: flex;
-  flex-flow: column;
+  flex-flow: column nowrap;
   justify-content: flex-start;
 
-  margin: 50px;
+  margin: 50px 80px;
 }
 
 .payment {
@@ -29,7 +31,7 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
 
-  margin: 50px;
+  margin: 50px 80px;
 }
 
 .left {

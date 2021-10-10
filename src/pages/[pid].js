@@ -30,11 +30,10 @@ const Checkout = () => {
     }
     {!loading && !productNotFound &&
       <>
-        <div className={`${styles.side} ${styles.left}`}>
+        <div className={`${styles.product} ${styles.left}`}>
           <Product product={product} />
         </div>
-        <div className={styles.divider} />
-        <div className={`${styles.side} ${styles.right}`}>
+        <div className={`${styles.payment} ${styles.right}`}>
           {isSubscribed
             ? <Subscribed pid={pid} product={product} />
             : <Widget pid={pid} product={product} />}
