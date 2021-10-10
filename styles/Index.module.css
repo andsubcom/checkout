@@ -1,0 +1,20 @@
+.layout {
+  flex-grow: 1;
+  align-self: flex-start;
+  margin: 100px 50px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.link {
+  font-size: 20px;
+  padding: 10px 15px;
+  margin: 0px 0px;
+}
+
+.link:hover {
+  cursor: pointer;
+}
