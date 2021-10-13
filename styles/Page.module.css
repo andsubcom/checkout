@@ -43,12 +43,12 @@
   .product {
     width: 100%;
     justify-content: center;
-    padding: 40px 0px 60px 0px;
+    padding: 20px 0px 60px 0px;
   }
 
   .payment {
     width: 100%;
     justify-content: center;
-    padding: 60px 0px 100px 0px;
+    padding: 20px 0px 100px 0px;
   }
 }

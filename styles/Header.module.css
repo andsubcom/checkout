@@ -8,6 +8,18 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 102%;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .header {
+    width: 102%;
+  } 
+
+  .account, .button, .whiteNetwork {
+    display: none;
+  }
 }
 
 .title {
