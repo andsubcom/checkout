@@ -49,3 +49,7 @@ button:active {
 .highlightSpan {
   color: #2d2d2d;
 }
+
+.hide {
+  display: none !important;
+}

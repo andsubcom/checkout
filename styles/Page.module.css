@@ -32,4 +32,24 @@
 
   padding-left: 135px;
   padding-top: 100px;
+  
+}
+
+@media screen and (max-width: 1200px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .product {
+    width: 100%;
+    justify-content: center;
+    padding: 40px 0px 60px 0px;
+    margin-left: -30px;
+  }
+
+  .payment {
+    width: 100%;
+    justify-content: center;
+    padding: 60px 0px 100px 0px;
+  }
 }

@@ -24,13 +24,13 @@ const Checkout = () => {
   // }
 
   return <div className={styles.layout}>
-    {loading && <span></span>}
+    { loading && <span></span> }
     {!loading && productNotFound &&
       <p style={{ padding: '40px', fontSize: '20px' }}>Subscription product <span className='highlightSpan'>{pid}</span> not found</p>
     }
     {!loading && !productNotFound &&
       <>
-        <div className={`${styles.product}`}>
+        <div className={`${styles.product} ${isSubscribed ? 'hide' : ''}`}>
           <Product product={product} />
         </div>
         <div className={`${styles.payment}`}>
