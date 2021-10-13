@@ -12,6 +12,12 @@
   box-shadow: 0 0 0 0.9px rgb(212, 212, 212),0 2px 4px 0 rgba(0,0,0,.07),0 1px 1.5px 0 rgba(0,0,0,.05);
 }
 
+@media screen and (max-width: 1200px) {
+  .widget {
+    box-shadow: none;
+  }
+}
+
 .logo {
   align-self: flex-start;
   width: 24px;
