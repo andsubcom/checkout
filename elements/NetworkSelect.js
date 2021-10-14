@@ -39,22 +39,22 @@ function NetworkSelect(props) {
         <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
           <BoxIcon src='/bsc.svg' alt='Ethereum logo' />
           <div className={styles.networkname}>BSC Mainnet</div>
-          <div className={dropdownStyles.soon}>soon</div>
+          <div className={dropdownStyles.soon2}>soon</div>
         </div>
         <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
           <BoxIcon src='/polygon.svg' alt='Ethereum logo' />
           <div className={styles.networkname}>Polygon</div>
-          <div className={dropdownStyles.soon}>soon</div> 
+          <div className={dropdownStyles.soon2}>soon</div> 
         </div>
         <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
           <BoxIcon src='/optimism.svg' alt='Ethereum logo' />
           <div className={styles.networkname}>Optimism</div>
-          <div className={dropdownStyles.soon}>soon</div> 
+          <div className={dropdownStyles.soon2}>soon</div> 
         </div>
         <div className={dropdownStyles.disabledItem} onClick={handleItemClick}>
           <BoxIcon src='/arbitrum.svg' alt='Ethereum logo' />
           <div className={styles.networkname}>Arbitrum</div>
-          <div className={dropdownStyles.soon}>soon</div> 
+          <div className={dropdownStyles.soon2}>soon</div> 
         </div>
       </div>
     </div>

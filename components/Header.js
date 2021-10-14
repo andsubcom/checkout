@@ -2,6 +2,10 @@ import { useEthers } from '@usedapp/core'
 import { networkNameById } from 'src/utils'
 import styles from 'styles/Header.module.css'
 
+import Image from 'next/image'
+
+import { Wallet } from 'react-iconly'
+
 const Account = () => {
   const { activateBrowserWallet, account, chainId, active, library } = useEthers()
   const connected = !!chainId
@@ -12,7 +16,10 @@ const Account = () => {
       {connected && <div className={styles.whiteNetwork}>{networkNameById(chainId)}</div>}
       {/* {!networkCorrect && account  && <div className={styles.network}>{`Swtich to Ropsten`}</div>} */}
       {connected && account && <div className={styles.account}>{account}</div>}
-      {!account && <button className={styles.button} onClick={() => { activateBrowserWallet() }}>Connect Wallet</button>}
+      {!account && <button className={styles.button} onClick={() => { activateBrowserWallet() }}><Wallet set="light" primaryColor="#fff" /></button>}
+      <div className={styles.walletIcon}>
+        <Image src='/metamask-fox.svg' width="30px" height="30px" alt="" />
+      </div>
     </div>
   )
 }
@@ -20,7 +27,7 @@ const Account = () => {
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.title}>Andsub Checkout</div>
+      <div className={styles.title}>Andsub</div>
       <Account />
     </div>
   )
