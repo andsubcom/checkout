@@ -11,11 +11,21 @@ import dropdownStyles from 'styles/Dropdown.module.css'
 
 import { useOnClickOutside } from 'src/utils'
 
+// function tokenOption(token, onClick) {
+
+
+//   return (
+//     <div key={token.address} className={dropdownStyles.disabledItem} onClick={onClick}>
+//       <BoxIcon src={token.icon} alt='Coin logo' />
+//       <div className={styles.networkname}>{token.symbol}</div>
+//       <div className={dropdownStyles.soon}>exchange fee</div>
+//     </div>
+//   )
+// }
+
 function CoinSelect({selectedToken, hasAllowance}) {
-  console.log('process.env.tokens', process.env.tokens, selectedToken)
   const { account } = useEthers()
   const otherTokens = Object.keys(process.env.tokens).filter(key => key !== selectedToken.address).map((key) => {return process.env.tokens[key]})
-  console.log('otherTokens', otherTokens)
   const tokenBalance = useTokenBalance(selectedToken.address, account)
   const tokenBalanceFormatted = tokenBalance ? utils.formatUnits(tokenBalance, selectedToken.decimals) : undefined
 

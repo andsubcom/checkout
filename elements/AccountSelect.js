@@ -11,11 +11,15 @@ import dropdownStyles from 'styles/Dropdown.module.css'
 import { useOnClickOutside } from 'src/utils'
 
 function AccountSelect(props) {
-  const { account } = useEthers()
+  const { account, activateBrowserWallet } = useEthers()
   const ref = useRef()
   const [isOpen, setIsOpen] = useState(false)
 
   useOnClickOutside(ref, () => setIsOpen(false))
+
+  const handleConnectClick = () => {
+    activateBrowserWallet()
+  }
 
   const handleSelectClick = () => {
     setIsOpen(!isOpen)
@@ -27,7 +31,7 @@ function AccountSelect(props) {
 
   return (
     <div className={dropdownStyles.wrapper} ref={ref}>
-      <div className={styles.accountbox} onClick={handleSelectClick}>
+      <div className={styles.accountbox} onClick={ account ? handleSelectClick : handleConnectClick }>
         <BoxIcon src='/metamask.svg' alt='Metamask logo' />
         <div className={styles.account}>{account ? shortenIfAddress(account) : 'Connect wallet'}</div>
         <BoxDropdown />

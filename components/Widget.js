@@ -7,14 +7,25 @@ import styles from 'styles/Widget.module.css'
 import ProgressBar from 'components/ProgressBar'
 
 import { AccountSelect, CoinSelect, NetworkSelect } from 'elements'
-import { Search, Send, Document } from 'react-iconly'
+import { Search, Send, Document, Wallet } from 'react-iconly'
 
 
 const hubAddress = process.env.NEXT_PUBLIC_ANDSUB_ADDRESS
 
 
 const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loading }) => {
+  const { account, activateBrowserWallet } = useEthers()
   const click = loading ? null : (hasAllowance ? subscribeClick : approveClick)
+
+  if(!loading && !account) {
+    return (
+      <button className={`${styles.button} ${loading && styles.buttonLoading}`} onClick={() => activateBrowserWallet()}>
+        <Wallet set="light" primaryColor="#fff" />
+        <span style={{ width: '6px' }} />
+        Connect wallet
+      </button>
+    )
+  }
 
   return (
     <button className={`${styles.button} ${loading && styles.buttonLoading}`} onClick={click}>
