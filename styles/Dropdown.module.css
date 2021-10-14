@@ -13,7 +13,7 @@
   padding: 12px 0x;
   z-index: 3;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 3px 8px;
 }
 
 .item {
@@ -47,7 +47,7 @@
   display: flex;
   position: absolute;
   top: 50%;
-  right: 16px;
+  left: 110px;
   transform: translateY(-50%);
   color: #ffffff;
   background-color: #bfbfbf;
@@ -55,4 +55,8 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
+}
+
+.amount {
+  padding-right: 4px;
 }

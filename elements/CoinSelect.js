@@ -10,6 +10,7 @@ import styles from 'styles/Widget.module.css'
 import dropdownStyles from 'styles/Dropdown.module.css'
 
 import { useOnClickOutside } from 'src/utils'
+import CoinOption from './CoinOption'
 
 // function tokenOption(token, onClick) {
 
@@ -45,7 +46,7 @@ function CoinSelect({selectedToken, hasAllowance}) {
   return (
     <div className={dropdownStyles.wrapper} ref={ref}>
       <div className={styles.coinbox} onClick={handleSelectClick}>
-        <BoxIcon src='/coin-logo.png' alt='Coin logo' />
+        <BoxIcon src={selectedToken.icon} alt='Coin logo' />
         <div className={styles.coincontent}>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <div className={styles.coinsymbol}>{selectedToken.symbol}</div>
@@ -61,15 +62,10 @@ function CoinSelect({selectedToken, hasAllowance}) {
         <div className={dropdownStyles.item} onClick={handleItemClick}>
           <BoxIcon src={selectedToken.icon} alt='Coin logo' />
           <div className={styles.networkname}>{selectedToken.symbol}</div>
+          <div className={dropdownStyles.amount}>{tokenBalanceFormatted}</div>
         </div>
         { otherTokens.map( token => {
-          return (
-            <div key={token.address} className={dropdownStyles.disabledItem} onClick={handleItemClick}>
-              <BoxIcon src={token.icon} alt='Coin logo' />
-              <div className={styles.networkname}>{token.symbol}</div>
-              <div className={dropdownStyles.soon}>exchange fee</div>
-            </div>
-          )
+          return <CoinOption key={token.address} token={token} onClick={handleItemClick} />
         })}
       </div>
     </div>
