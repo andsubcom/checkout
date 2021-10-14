@@ -3,22 +3,31 @@
   padding: 0px 32px;
   border-bottom: 1px solid hsla(0, 0%, 100%, .2);
 
-  background-color: #000;
+  background-color: #141414;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 102%;
+  width: 100%;
 }
 
+.walletIcon {
+  display: none;
+  margin-left: 18px;
+  margin-top: 1px;
+}
 
 @media screen and (max-width: 1200px) {
   .header {
     width: 102%;
   } 
 
-  .account, .button, .whiteNetwork {
+  .button {
     display: none;
+  }
+
+  .walletIcon {
+    display: flex;
   }
 }
 

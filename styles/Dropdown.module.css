@@ -57,6 +57,20 @@
   font-weight: 600;
 }
 
+.soon2 {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  color: #ffffff;
+  background-color: #bfbfbf;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .amount {
   padding-right: 4px;
 }

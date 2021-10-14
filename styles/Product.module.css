@@ -88,3 +88,24 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.warning {
+  color: #fff;
+  background-color: #ffcc00;
+  padding: 8px 12px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 77px;
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    margin-left: 12px;
+    padding-top: 30px;
+  }
+  .warning {
+    display: block;
+  }
+}

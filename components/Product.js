@@ -52,6 +52,8 @@ const Product = ({ product }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.warning}>Currently you can use the checkout page only with a desktop version of Metamask</div>
+
       <div className={styles.subscribe}>Subscribe to</div>
       <div className={styles.product}>
         <Image
