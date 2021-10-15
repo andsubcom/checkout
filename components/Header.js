@@ -27,7 +27,7 @@ const Account = () => {
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.title}>Andsub</div>
+      <div className={styles.title}><Image src='/logo-white.png' width="20px" height="20px" alt="" /> Andsub</div>
       <Account />
     </div>
   )
