@@ -20,9 +20,10 @@ const Button = ({ hasAllowance, subscribeClick, approveClick, selectedToken, loa
   if(!loading && !account) {
     return (
       <button className={`${styles.button} ${loading && styles.buttonLoading}`} onClick={() => activateBrowserWallet()}>
-        <Wallet set="light" primaryColor="#fff" />
-        <span style={{ width: '6px' }} />
-        Connect wallet
+        {/* <Wallet set="light" primaryColor="#fff" /> */}
+        <Image src='/metamask-fox.svg' width="26px" height="26px" alt=""/>
+        <span style={{ width: '8px' }} />
+        Connect MetaMask
       </button>
     )
   }

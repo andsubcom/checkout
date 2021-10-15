@@ -56,6 +56,11 @@
   margin-left: 20px;
   font-size: 1.1rem;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 195px;
+  margin-top: 3px;
 }
 
 .network {
