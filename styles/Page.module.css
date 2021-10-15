@@ -19,7 +19,7 @@
 
   background-color: #fff;
   padding-right: 135px;
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .payment {
@@ -29,8 +29,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-left: 135px;
-  padding-top: 100px;
+  padding-left: 110px;
+  padding-top: 80px;
 }
 
 @media screen and (max-width: 1200px) {

@@ -1,4 +1,4 @@
-import { useEthers } from '@usedapp/core'
+import { useEthers, shortenIfAddress } from '@usedapp/core'
 import { networkNameById } from 'src/utils'
 import styles from 'styles/Header.module.css'
 
@@ -16,6 +16,7 @@ const Account = () => {
       {connected && <div className={styles.whiteNetwork}>{networkNameById(chainId)}</div>}
       {/* {!networkCorrect && account  && <div className={styles.network}>{`Swtich to Ropsten`}</div>} */}
       {connected && account && <div className={styles.account}>{account}</div>}
+      {connected && account && <div className={styles.accountMobile}>{shortenIfAddress(account)}</div>}
       {!account && <button className={styles.button} onClick={() => { activateBrowserWallet() }}><Image src='/metamask-fox.svg' width="30px" height="30px" alt=""/> Connect wallet</button>}
       {!account && <div className={styles.walletIcon}>
         <Image src='/metamask-fox.svg' width="30px" height="30px" alt="" />
