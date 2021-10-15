@@ -51,16 +51,23 @@
 }
 
 .button {
-  height: 40px;
-  padding: 0px 20px;
+  height: 42px;
+  padding: 5px 20px;
   margin-left: 20px;
   font-size: 1.1rem;
   white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 195px;
+  width: 200px;
   margin-top: 3px;
+  border: 1px solid #fff;
+  /* color: #000; */
+  background-color: #1e1e1e;
+}
+
+.button:hover {
+  background-color: #464646;
 }
 
 .network {
