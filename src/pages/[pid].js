@@ -18,6 +18,7 @@ const Checkout = () => {
   console.log('product =', product, 'loading =', loading, 'productNotFound =', productNotFound)
 
   var isSubscribed = useIsSubscribed(pid)
+  // var isSubscribed = true
   // TODO: uncomment to test subscribed layout
   // if (typeof isSubscribed !== 'undefined') {
   //   isSubscribed = true

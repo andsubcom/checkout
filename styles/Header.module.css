@@ -17,21 +17,8 @@
   margin-top: 1px;
 }
 
-@media screen and (max-width: 1200px) {
-  .header {
-    width: 102%;
-  } 
-
-  .button {
-    display: none;
-  }
-
-  .walletIcon {
-    display: flex;
-  }
-}
-
 .title {
+  margin-top: 2px;
   border: none;
   color: #fafafa;
   padding: 0px 0px;
@@ -51,11 +38,23 @@
 }
 
 .button {
-  height: 40px;
-  padding: 0px 20px;
+  height: 42px;
+  padding: 5px 20px;
   margin-left: 20px;
   font-size: 1.1rem;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+  margin-top: 3px;
+  border: 1px solid #fff;
+  /* color: #000; */
+  background-color: #1e1e1e;
+}
+
+.button:hover {
+  background-color: #464646;
 }
 
 .network {
@@ -97,4 +96,46 @@
 .account:hover,
 .account:focus {
   background-color: #d4d4d4;
+}
+
+.accountMobile {
+  height: 30px;
+  display: none;
+  align-items: center;
+  padding: 0px 15px;
+  margin-left: 20px;
+  background-color: #efefef;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.accountMobile:hover,
+.accountMobile:focus {
+  background-color: #d4d4d4;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    width: 102%;
+  } 
+
+  .button {
+    display: none !important;
+  }
+
+  .walletIcon {
+    display: flex;
+  }
+  .accountMobile {
+    display: flex;
+  }
+  .account {
+    display: none;
+  }
+  .whiteNetwork {
+    display: none;
+  }
 }
