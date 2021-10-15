@@ -17,9 +17,9 @@ const Account = () => {
       {/* {!networkCorrect && account  && <div className={styles.network}>{`Swtich to Ropsten`}</div>} */}
       {connected && account && <div className={styles.account}>{account}</div>}
       {!account && <button className={styles.button} onClick={() => { activateBrowserWallet() }}><Image src='/metamask-fox.svg' width="30px" height="30px" alt=""/> Connect wallet</button>}
-      <div className={styles.walletIcon}>
+      {!account && <div className={styles.walletIcon}>
         <Image src='/metamask-fox.svg' width="30px" height="30px" alt="" />
-      </div>
+      </div>}
     </div>
   )
 }
@@ -27,7 +27,7 @@ const Account = () => {
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.title}><Image src='/logo-white.png' width="20px" height="20px" alt="" /> Andsub</div>
+      <div className={styles.title}><Image src='/logo-text-white.png' width="130px" height="39px" alt="" /></div>
       <Account />
     </div>
   )
