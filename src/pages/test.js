@@ -3,9 +3,18 @@ import WalletConnectProvider from '@walletconnect/web3-provider'
 import { providers } from 'ethers'
 import { useEthers } from '@usedapp/core'
 import Web3Modal from 'web3modal'
-
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 
 const INFURA_ID = '460f40a260564ac4a4f4b3fffb032dad'
+const rpc_url =  'https://mainnet.infura.io/v3/60ab76e16df54c808e50a79975b4779f'
+const rpc_url3 =  'https://ropsten.infura.io/v3/60ab76e16df54c808e50a79975b4779f'
+
+export const walletconnect = new WalletConnectConnector({
+  rpc: { 1: rpc_url, 3: rpc_url3 },
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true,
+  pollingInterval: 12000
+})
 
 const providerOptions = {
   walletconnect: {
@@ -63,26 +72,12 @@ function reducer(state, action) {
 
 const Test = () => {
   const pid = 'andsub_demo'
-  const { library } = useEthers
+  const { library, activate } = useEthers()
   const [state, dispatch] = useReducer(reducer, initialState)
   const { provider, web3Provider, address, chainId } = state
 
   const connect = useCallback(async function () {
-    const provider = await web3Modal.connect()
-    const web3Provider = new providers.Web3Provider(provider)
-
-    const signer = web3Provider.getSigner()
-    const address = await signer.getAddress()
-
-    const network = await web3Provider.getNetwork()
-
-    dispatch({
-      type: 'SET_WEB3_PROVIDER',
-      provider,
-      web3Provider,
-      address,
-      chainId: network.chainId,
-    })
+    activate(walletconnect)
   }, [])
 
   const disconnect = useCallback(
@@ -99,11 +94,11 @@ const Test = () => {
   )
 
   // Auto connect to the cached provider
-  useEffect(() => {
-    if (web3Modal.cachedProvider) {
-      connect()
-    }
-  }, [connect])
+  // useEffect(() => {
+  //   if (web3Modal.cachedProvider) {
+  //     connect()
+  //   }
+  // }, [connect])
 
   useEffect(() => {
     if (provider?.on) {
