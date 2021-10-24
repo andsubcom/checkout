@@ -10,15 +10,29 @@ import dropdownStyles from 'styles/Dropdown.module.css'
 
 import { useOnClickOutside } from 'src/utils'
 
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
+
+const INFURA_ID = '460f40a260564ac4a4f4b3fffb032dad'
+const rpc_url =  'https://mainnet.infura.io/v3/60ab76e16df54c808e50a79975b4779f'
+const rpc_url3 =  'https://ropsten.infura.io/v3/60ab76e16df54c808e50a79975b4779f'
+
+export const walletconnect = new WalletConnectConnector({
+  rpc: { 3: rpc_url3 },
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true,
+  pollingInterval: 12000
+})
+
 function AccountSelect(props) {
-  const { account, activateBrowserWallet } = useEthers()
+  const { account, activateBrowserWallet, activate } = useEthers()
   const ref = useRef()
   const [isOpen, setIsOpen] = useState(false)
 
   useOnClickOutside(ref, () => setIsOpen(false))
 
   const handleConnectClick = () => {
-    activateBrowserWallet()
+    // activateBrowserWallet()
+    activate(walletconnect)
   }
 
   const handleSelectClick = () => {
