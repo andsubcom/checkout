@@ -19,12 +19,12 @@ const Product = ({ product }) => {
   const { account } = useEthers()
 
   const name = product.name
-  const price = `${utils.formatUnits(product.amount, token.decimals)} ${token.symbol}`
+  const price = `${utils.formatUnits(product.price, token.decimals)} ${token.symbol}`
   const period = formatPeriod(product.period.toNumber())
   const [error, setError] = useState(null)
   const [metadata, setMetadata] = useState(metadata)
 
-  const metadataUrl = ipfsToGateway(product.uri)
+  const metadataUrl = ipfsToGateway(product.metadataUri || '')
   const imageUrl = metadata ? ipfsToGateway(metadata.image) : undefined
 
   const { state: mintState, send: sendMint } = useSendMintTokens(token.address)

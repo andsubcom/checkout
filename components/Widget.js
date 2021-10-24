@@ -75,7 +75,7 @@ const Widget = ({ pid, product }) => {
   const [hasPendingTransaction, setHasPendingTransaction] = useState(false)
 
   const allowance = useTokenAllowance(selectedToken.address, account)
-  const hasAllowance = allowance ? allowance.gt(product.amount) : undefined
+  const hasAllowance = allowance ? allowance.gt(product.price) : undefined
 
   const { state: approveState, send: sendApprove } = useSendApproveUnlimited(selectedToken.address)
   const approveClick = () => { sendApprove(hubAddress, ethers.constants.MaxUint256) }

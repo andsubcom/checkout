@@ -10,7 +10,7 @@ const Subscribed = ({ pid, product }) => {
   const token = process.env.tokens[product.payableToken]
   const { account } = useEthers()
   const network = 'Ropsten'
-  const cost = utils.formatUnits(product.amount, token.decimals)
+  const cost = utils.formatUnits(product.price, token.decimals)
   const period = formatPeriod(product.period.toNumber())
 
   const { state: cancelState, send: sendCancel } = useSendCancel()

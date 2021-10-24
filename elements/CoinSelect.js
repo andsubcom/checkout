@@ -62,7 +62,7 @@ function CoinSelect({selectedToken, hasAllowance}) {
         <div className={dropdownStyles.item} onClick={handleItemClick}>
           <BoxIcon src={selectedToken.icon} alt='Coin logo' />
           <div className={styles.networkname}>{selectedToken.symbol}</div>
-          <div className={dropdownStyles.amount}>{tokenBalanceFormatted}</div>
+          <div className={dropdownStyles.price}>{tokenBalanceFormatted}</div>
         </div>
         { otherTokens.map( token => {
           return <CoinOption key={token.address} token={token} onClick={handleItemClick} />

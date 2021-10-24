@@ -16,7 +16,7 @@ function CoinOption({token, onClick}) {
     <div key={token.address} className={dropdownStyles.disabledItem} onClick={onClick}>
       <BoxIcon src={token.icon} alt='Coin logo' />
       <div className={styles.networkname}>{token.symbol} <div className={dropdownStyles.soon}>exchange fee</div></div>
-      <div className={dropdownStyles.amount}>{tokenBalanceFormatted}</div>
+      <div className={dropdownStyles.price}>{tokenBalanceFormatted}</div>
     </div>
   )
 }
