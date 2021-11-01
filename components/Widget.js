@@ -81,7 +81,7 @@ const Widget = ({ pid, product }) => {
   const approveClick = () => { sendApprove(hubAddress, ethers.constants.MaxUint256) }
 
   const { state: subscribeState, send: sendSubscribe } = useSendSubscribe()
-  const subscribeClick = () => { sendSubscribe(pid, true) }
+  const subscribeClick = () => { sendSubscribe(pid) }
 
   // 'None' | 'Mining' | 'Success' | 'Fail' | 'Exception'
   const pendingStatuses = ['Mining']
