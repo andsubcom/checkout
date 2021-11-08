@@ -24,8 +24,8 @@ export const useIsSubscribed = (productId) => {
   const [isSubscribed] = useContractCall(account && {
     abi: new Interface(ANDSUB_HUB_ABI),
     address: ANDSUB_HUB_ADDRESS,
-    method: 'checkUserHasActiveSubscription',
-    args: [account, productId]
+    method: 'findTokenId',
+    args: [productId, account]
   }) ?? []
   return isSubscribed
 }
