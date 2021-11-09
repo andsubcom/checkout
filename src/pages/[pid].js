@@ -15,10 +15,8 @@ const Checkout = () => {
   const loading = typeof product === 'undefined'
   // TODO: check by id/slug/something
   const productNotFound = !!product && product.owner__ == 0
-  console.log('product =', product, 'loading =', loading, 'productNotFound =', productNotFound)
 
   var isSubscribed = useIsSubscribed(pid)
-  console.log('isSubscribed', isSubscribed)
   // var isSubscribed = true
   // TODO: uncomment to test subscribed layout
   // if (typeof isSubscribed !== 'undefined') {

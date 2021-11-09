@@ -21,13 +21,13 @@ export const useProductInfo = (productId) => useContractCall({
 export const useIsSubscribed = (productId) => {
   const { account } = useEthers()
 
-  const [isSubscribed] = useContractCall(account && {
+  const tokenId = useContractCall(account && {
     abi: new Interface(ANDSUB_HUB_ABI),
     address: ANDSUB_HUB_ADDRESS,
     method: 'findTokenId',
     args: [productId, account]
-  }) ?? []
-  return isSubscribed
+  }) ?? 0
+  return tokenId.toString() === '0' ? false : true
 }
 
 export const useSendSubscribe = function () {
